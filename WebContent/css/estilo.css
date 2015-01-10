@@ -1,0 +1,72 @@
+@CHARSET "ISO-8859-1";
+
+/*BOX==Pagina toda*/
+
+
+#box{ 
+	
+	width: 1366px; 
+	height: auto;
+	margin: 0 auto;
+	
+}
+   
+/*HEADER -- banner*/   
+   
+#header{
+	
+	width: 1366px;
+	heigh : 200px;
+	
+}
+
+/*Content -- Body*/
+
+#content0{
+	width: 1366px;
+	height: auto;
+	margin: 0 auto;
+}
+
+/*content1 -- Andares*/
+#content1{
+	width: 1366px;
+/* 	min-height: 100px; */
+}
+
+/*content2 -- Radios*/
+#content2{
+	width: 341px;
+ 	min-height: 468px; 
+	float: left;
+
+}
+
+/*content3 -- Alarmes*/
+#content3{
+	width: 341px;
+	float: left;
+ 	min-height: 468px; 	
+	float: left;
+}
+
+/*content4 -- Personalizados*/
+#content4{
+	width: 341px;
+ 	min-height: 468px; 
+	float: left;
+}
+
+/*content5 -- Desligar*/
+#content5{
+	width: 343px;
+ 	min-height: 468px; 
+	float: left;
+}
+
+#footer{
+	
+	width: 1366px;
+	height: auto;
+	
+}

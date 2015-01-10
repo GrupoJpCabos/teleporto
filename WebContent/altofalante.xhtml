@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://java.sun.com/jsf/html"
+ 	xmlns:f="http://java.sun.com/jsf/core"
+ 	xmlns:p="http://primefaces.org/ui"
+ 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Alto-Falantes</title>
+
+<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+
+</h:head>
+<h:body >
+
+<div id="box">
+		<h:form id="form">
+		
+		<div id="header">
+       		<p:graphicImage value="/imagem/tag.jpg" /> 
+    	</div>
+      	 
+      	 <div id="content0">
+			
+				
+				  
+			   
+			   <p:growl id="messages"></p:growl>
+			   
+			   <div id="content1">
+					    <p:dataTable id="dtAndar" var="andar" value="#{acionamentoMB.lstAndar}" rowKey="#{andar.id}"  
+					                 selection="#{acionamentoMB.lstAndarEscolhido}" selectionMode="multiple" >  
+					  
+					        
+					  
+					        <p:column headerText="Andar">  
+					            #{andar.andar}  
+					        </p:column>  
+					  
+					        <p:column headerText="Bloco">  
+					            #{andar.bloco}  
+					        </p:column>  
+					  
+					        <p:column headerText="Ip" >  
+					            #{andar.ipRasp}  
+					        </p:column>  
+					   
+					    </p:dataTable>
+			     </div>
+			     
+			    
+			        
+			        <div id="content2">
+			          	<p:panel header="Rádio"  style="min-height: 268px;">
+				         	<p:commandButton id="btJovemPan" value="Jovem Pan"
+				         	 action="#{acionamentoMB.radioJovemPan}" update="@form" style="font-size: 12px" /><p/>
+				         	 
+				         	 <p:commandButton id="btBeat98" value="Beat 98"
+				         	 action="#{acionamentoMB.radioBeat98}" update="@form" style="font-size: 12px" /><p />
+				         	 
+				         	 <p:commandButton id="btMix" value="MIX-FM"
+				         	 action="#{acionamentoMB.radioMix}" update="@form" style="font-size: 12px" /><p />
+				         	 
+				         	 <p:commandButton id="btNovaBrasil" value="Nova Brasil"
+				         	 action="#{acionamentoMB.radioNovaBrasil}" update="@form" style="font-size: 12px" /><p />
+			         	 </p:panel> 
+			         	 
+			        </div>
+			        
+			        
+			        <div id="content3">	 
+
+				         	<p:panel header="Alarmes" style="min-height: 268px;" >
+				         	 <h:form id="form" >
+
+        						<p:fileUpload fileUploadListener="#{fileUploadController.upload}" showButtons="true" dragDropSupport="true"
+												allowTypes="/(\.|\/)(gif|jpe?g|png|mp3)$/" 
+												description="Select Images" style="font-size:13px;"  />
+
+   							 </h:form>
+   							 
+           					<br />
+
+			         	 
+			         	 	<h:outputLabel for="selectOne" value="Selecione um Alarme :" style="font-size: 14px; font-weight: bold;"/><br />
+           					<p:selectOneMenu id="selectOne" value="#{acionamentoMB.upload.arquivo}" effect="fold" style="font-size: 12px">
+           						<f:selectItems value="#{acionamentoMB.uploads}" style="font-size: 12px"/>
+           					</p:selectOneMenu>
+           					<br/><br />
+           					<p:commandButton id="btPersonalizado" value="Personalizado" action="#{acionamentoMB.personalizado}" 
+           					update="@form"  style="font-size: 12px"/> <br />
+           			</p:panel>
+			        
+				         	
+           					
+			         	 
+			        </div> 
+			        
+			        
+			        
+			        
+			        <div id="content4">	 
+			         	 <p:panel header="Desligar" style="min-height: 268px;">
+				         	 
+							 <p:commandButton id="btDesligarRadio" value="Desligar a Radio" action="#{acionamentoMB.desligarRadio}" update="@form" style="font-size: 12px" /> 
+						</p:panel> 
+					</div>
+					
+					<div id="content5">	 
+						<p:panel header="Personalizado" style="min-height: 268px;" >
+				         	 <p:commandButton id="btAoVivo" value="Ao Vivo" action="#{acionamentoMB.aoVivo}" update="@form" style="font-size: 12px" />
+				        </p:panel> 
+				    </div>
+				    
+				    
+			         	 
+			       
+				 
+				 
+				 
+	 </div>
+	 
+	   	 		<div id="footer">
+			 
+				 	<ui:include src="menu.xhtml"/>
+				 
+				 </div>
+	 </h:form>
+</div>
+</h:body>
+
+
+</html>

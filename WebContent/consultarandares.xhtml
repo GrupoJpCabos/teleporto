@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://java.sun.com/jsf/html"
+ 	xmlns:f="http://java.sun.com/jsf/core"
+ 	xmlns:p="http://primefaces.org/ui"
+ 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+<f:view contentType="text/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Consultando-Andares</title>
+<ui:insert name="head"> </ui:insert> 
+<style type="text/css"> 
+	.panelTable{
+	
+		font-size: 12px;
+		width: 50%;
+	}
+</style>
+</h:head>
+
+<h:body>
+	 
+	
+	<h:form id="form">
+	
+	 <p:dataTable id="dataTable" var="andares" value="#{andarMB.andares}" widgetVar="andares"   
+            emptyMessage="Sem Andares" filteredValue="#{andar.filteredCars}" styleClass="panelTable">  
+  
+         <f:facet name="header">Consultando -- Andares</f:facet>  
+        
+        
+         <p:column id="andarColumn" filterBy="andar" headerText="Andares" width="0" >
+            <h:outputText value="#{andares.andar}" />  
+        </p:column>  
+        
+        <p:column id="blocoColumn" headerText="Bloco" width="0" >                
+            <h:outputText value="#{andares.bloco}" />  
+        </p:column>
+        
+        <p:column id="ipRaspColumn" headerText="Ip Raspberry" width="0">                
+            <h:outputText value="#{andares.ipRasp}" />  
+        </p:column>
+        
+         <p:column id="editarColumn" headerText="Editar" width="0">                
+            <p:commandButton action="#{andarMB.editar}" value="Editar" update="@form" icon="ui-icon-pencil">
+				<f:setPropertyActionListener target="#{andarMB.andar}"  value="#{andares}" ></f:setPropertyActionListener>	
+			</p:commandButton>
+        </p:column>
+        
+         <p:column id="excluirColumn" headerText="Excluir" width="0">                
+            <p:commandButton value="Excluir" onclick="confirmation.show()" id="excluir" icon="ui-icon-trash">
+				<f:setPropertyActionListener value="#{andares}" target="#{andarMB.andar}" for="excluir"/>			
+           	 </p:commandButton> 
+        </p:column>
+        
+        </p:dataTable>
+	 <p:messages/>
+	 <ui:include src="menu.xhtml"/>
+</h:form>
+
+</h:body>
+
+
+		<p:dialog id="confirmDialog" header="Atenção !" severity="alert" widgetVar="confirmation"   appendToBody="true" modal="true">  
+                 
+            <h:outputText value="Você deseja excluir este Autorizado ?" />
+            <br /><br />
+      		<p:commandButton value="Sim" oncomplete="confirmation.hide()" update="form" action="#{andarMB.excluir}" />  
+
+        	<p:commandButton id="decline" value="Ainda Não" onclick="confirmation.hide()" type="button" />   
+	 
+   		</p:dialog> 
+</f:view>
+</html>

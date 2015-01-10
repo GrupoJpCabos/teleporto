@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://java.sun.com/jsf/html"
+ 	xmlns:f="http://java.sun.com/jsf/core"
+ 	xmlns:p="http://primefaces.org/ui"
+ 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+<f:view contentType="text/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro-Andares</title>
+<ui:insert name="head"> </ui:insert> 
+<style type="text/css"> 
+	
+	.panelGrid{
+	
+		font-size: 10px;
+	}
+	
+</style>
+
+
+</h:head>
+
+<h:body>
+	 
+	
+	<h:form id="form">
+	
+	<p:panelGrid id="panel" columns="2" styleClass="panelGrid">
+	 	
+	 	  <f:facet name="header">  
+        		Cadastrar Andar
+  		  </f:facet>  
+	 			
+	 			
+	 			
+	 			<h:outputLabel for="andar" value="Andar: "/>
+	 			<p:inputText label="andar" id="andar" value="#{andarMB.andar.andar}" required="true"
+	 			 requiredMessage="Informe o Andar"/>			
+	 			
+	 			<h:outputLabel for="bloco" value="Bloco" />
+	 			<p:inputText label="bloco" id="bloco" value="#{andarMB.andar.bloco}" required="true"
+	 			 requiredMessage="Informe o Bloco"/> 			
+	 			
+	 			<h:outputLabel for="ipRasp" value="Ip/Porta RaspBerry" />
+	 			<p:inputText label="ipRasp" id="ipRasp" value="#{andarMB.andar.ipRasp}"  required="true"
+	 			 requiredMessage="Informe o IP do RaspBerry"/> 	
+	 		
+	 		<f:facet name="footer">  
+	 			<p:commandButton value="Cadastrar Andar" action="#{andarMB.cadastrar}" update="@form"/>
+			</f:facet>
+
+	 </p:panelGrid>
+	 <p:messages/>
+	 <ui:include src="menu.xhtml"/>
+</h:form>
+
+</h:body>
+</f:view>
+</html>
